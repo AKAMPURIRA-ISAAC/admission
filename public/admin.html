@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Secure admissions management for Heart & Hands Vocational Secondary School."
+    />
+    <title>Admin Portal · Heart & Hands Admissions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-header">
+        <a class="admin-brand" href="/" aria-label="Return to admission form">
+          <span class="brand-mark"><i class="fa-solid fa-hands-holding-child"></i></span>
+          <span>
+            <strong>Heart & Hands</strong>
+            <small>Admissions management</small>
+          </span>
+        </a>
+        <a class="public-link" href="/">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Public admission form</span>
+        </a>
+      </header>
+
+      <section class="login-card" id="loginPanel" aria-labelledby="loginHeading" hidden>
+        <div class="login-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <p class="eyebrow">Authorized staff only</p>
+        <h1 id="loginHeading">Admin sign in</h1>
+        <p class="login-copy">Sign in to review and manage student applications.</p>
+        <form id="loginForm">
+          <label for="username">Username</label>
+          <input id="username" name="username" autocomplete="username" required />
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <button type="submit" class="primary-button" id="loginButton">
+            <i class="fa-solid fa-lock"></i> Sign in securely
+          </button>
+        </form>
+      </section>
+
+      <section class="dashboard" id="dashboardPanel" hidden>
+        <div class="dashboard-title">
+          <div>
+            <p class="eyebrow">Admissions office</p>
+            <h1>Student applications</h1>
+            <p id="welcomeText">Manage submitted admission applications.</p>
+          </div>
+          <button type="button" class="secondary-button" id="logoutButton">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+          </button>
+        </div>
+
+        <section class="workspace-card">
+          <div class="list-heading">
+            <div>
+              <h2>Applications</h2>
+              <p id="resultCount" aria-live="polite">Loading applications…</p>
+            </div>
+            <form class="filters" id="filterForm">
+              <label class="search-control" for="searchInput">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input
+                  type="search"
+                  id="searchInput"
+                  placeholder="Student name or admission no."
+                  autocomplete="off"
+                />
+              </label>
+              <label class="status-control" for="statusFilter">
+                <span class="sr-only">Filter by application status</span>
+                <select id="statusFilter">
+                  <option value="">All statuses</option>
+                  <option value="received">Received</option>
+                  <option value="reviewing">Reviewing</option>
+                  <option value="admitted">Admitted</option>
+                  <option value="rejected">Rejected</option>
+                </select>
+              </label>
+              <button type="submit" class="filter-button">Search</button>
+            </form>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Admission no.</th>
+                  <th scope="col">Student</th>
+                  <th scope="col">District</th>
+                  <th scope="col">Submitted</th>
+                  <th scope="col">Status</th>
+                  <th scope="col"><span class="sr-only">Open application</span></th>
+                </tr>
+              </thead>
+              <tbody id="applicationRows"></tbody>
+            </table>
+            <div class="empty-state" id="emptyState" hidden>
+              <i class="fa-regular fa-folder-open"></i>
+              <strong>No applications found</strong>
+              <span>Try a different name, admission number, or status filter.</span>
+            </div>
+          </div>
+
+          <div class="table-footer">
+            <span id="pageSummary"></span>
+            <div class="page-actions">
+              <button type="button" class="page-button" id="previousPage" aria-label="Previous page">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button type="button" class="page-button" id="nextPage" aria-label="Next page">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-card" id="detailPanel" aria-labelledby="detailHeading" hidden>
+          <div class="detail-header">
+            <div>
+              <p class="eyebrow">Application record</p>
+              <h2 id="detailHeading">Student details</h2>
+            </div>
+            <button type="button" class="icon-button" id="closeDetails" aria-label="Close application details">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <p class="detail-admission" id="detailAdmission"></p>
+          <div class="contact-actions" id="applicationContactActions" hidden>
+            <a class="contact-action" id="studentEmailAction">
+              <i class="fa-solid fa-envelope"></i> Email student
+            </a>
+            <a class="contact-action whatsapp-action" id="parentWhatsappAction" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i> Message guardian on WhatsApp
+            </a>
+          </div>
+          <div class="detail-grid" id="detailGrid"></div>
+          <div class="rejection-reason-field" id="rejectionReasonField" hidden>
+            <label for="rejectionReason">Reason to include in the rejection email</label>
+            <textarea
+              id="rejectionReason"
+              rows="4"
+              maxlength="1500"
+              placeholder="Explain the decision clearly and respectfully. This will be emailed to the student's contact address."
+              disabled
+            ></textarea>
+            <small>A rejection reason is required before the email can be sent.</small>
+          </div>
+          <div class="detail-status-control">
+            <label for="detailStatus">Application status</label>
+            <select id="detailStatus">
+              <option value="received">Received</option>
+              <option value="reviewing">Reviewing</option>
+              <option value="admitted">Admitted</option>
+              <option value="rejected">Rejected</option>
+            </select>
+            <button type="button" class="primary-button" id="saveStatus">Save status</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="adminToast" role="status" aria-live="polite"></div>
+    <script src="/admin.js" defer></script>
+  </body>
+</html>

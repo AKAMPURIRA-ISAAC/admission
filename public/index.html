@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Student admission application for Heart & Hands Vocational Secondary School."
+    />
+    <title>Heart & Hands Vocational Secondary · Admissions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="celebration-banner">
+        <div class="banner-mark" aria-hidden="true">
+          <i class="fa-solid fa-tree"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <p class="eyebrow">Admissions for Senior One & Two</p>
+        <h1>Congratulations, <em>Primary Seven</em> Graduates</h1>
+        <p>Wishing you a joyful Christmas and a prosperous New Year 2027.</p>
+        <p class="banner-location">
+          Heart & Hands Vocational Secondary School · 2027 Intake
+        </p>
+      </header>
+
+      <section class="school-header" aria-label="School information">
+        <a class="brand" href="#" aria-label="Heart and Hands home">
+          <span class="brand-icon" aria-hidden="true">
+            <i class="fa-solid fa-hands-holding-child"></i>
+          </span>
+          <span>
+            <strong>Heart & Hands Vocational</strong>
+            <small>Secondary School · Admissions 2027</small>
+          </span>
+        </a>
+        <div class="contact-badges">
+          <a class="contact-badge" href="tel:+256789317645">
+            <i class="fa-solid fa-phone"></i>
+            <span>Admin: <strong>+256 789 317 645</strong></span>
+          </a>
+          <a class="contact-badge" href="tel:+256751764819">
+            <i class="fa-solid fa-phone"></i>
+            <span>Admin: <strong>+256 751 764 819</strong></span>
+          </a>
+          <a class="contact-badge" href="tel:+256701919400">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Principal: <strong>+256 701 919 400</strong></span>
+          </a>
+          <a class="contact-badge admin-entry" href="/admin.html">
+            <i class="fa-solid fa-lock"></i>
+            <span>Admin portal</span>
+          </a>
+        </div>
+      </section>
+
+      <div class="location-strip" aria-label="School location">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        <p>
+          Kyenjojo District <span>›</span>Kyenjojo Town Council
+          <span>›</span> Kijuma Ward <span>›</span> Nyakabara Village
+          <strong>· On the hill where the giants meet</strong>
+        </p>
+      </div>
+
+      <div class="main-grid">
+        <section class="form-card" aria-labelledby="form-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">2027 application</p>
+              <h2 id="form-heading">Student Admission Form</h2>
+            </div>
+            <span class="intake-badge">Senior 1 & 2</span>
+          </div>
+          <p class="form-note">
+            Fields marked <span class="required">*</span> are required.
+          </p>
+
+          <form id="admissionForm" novalidate>
+            <fieldset class="form-section">
+              <legend>Student information</legend>
+              <div class="form-row">
+                <div class="input-group input-full">
+                  <label for="studentName">
+                    <i class="fa-solid fa-user-graduate"></i> Full name
+                    <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="studentName"
+                    name="studentName"
+                    placeholder="e.g. Akello Grace"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row form-row-four">
+                <div class="input-group">
+                  <label for="sex">
+                    <i class="fa-solid fa-venus-mars"></i> Sex
+                    <span class="required">*</span>
+                  </label>
+                  <select id="sex" name="sex" required>
+                    <option value="">Select</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label for="dob">
+                    <i class="fa-solid fa-calendar-days"></i> Date of birth
+                    <span class="required">*</span>
+                  </label>
+                  <input type="date" id="dob" name="dateOfBirth" required />
+                </div>
+                <div class="input-group">
+                  <label for="joiningClass">
+                    <i class="fa-solid fa-book-open"></i> Joining class
+                    <span class="required">*</span>
+                  </label>
+                  <select id="joiningClass" name="joiningClass" required>
+                    <option value="">Select class</option>
+                    <option value="Senior 1">Senior 1</option>
+                    <option value="Senior 2">Senior 2</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label for="nationality">
+                    <i class="fa-solid fa-flag"></i> Nationality
+                    <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="nationality"
+                    name="nationality"
+                    value="Ugandan"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="input-group input-full">
+                  <label for="studentEmail">
+                    <i class="fa-solid fa-envelope"></i> Student or parent /
+                    guardian email
+                    <span class="required">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="studentEmail"
+                    name="studentEmail"
+                    placeholder="name@example.com"
+                    autocomplete="email"
+                    maxlength="254"
+                    required
+                  />
+                  <small class="field-hint"
+                    >Use an email checked regularly. We’ll send the application
+                    receipt here.</small
+                  >
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend>Home location</legend>
+              <div class="form-row form-row-five">
+                <div class="input-group">
+                  <label for="district"
+                    ><i class="fa-solid fa-map-pin"></i> District
+                    <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="district"
+                    name="district"
+                    placeholder="Kyenjojo"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="subcounty"
+                    ><i class="fa-solid fa-location-dot"></i> County
+                    <span class="optional">(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    id="County"
+                    name="County"
+                    placeholder="Mwenge central"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="subcounty"
+                    ><i class="fa-solid fa-building"></i> Sub-County
+                    <span class="optional">(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    id="county"
+                    name="county"
+                    placeholder="Kyenjojo Town Council"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="parish"
+                    ><i class="fa-solid fa-church"></i> Parish
+                    <span class="optional">(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    id="parish"
+                    name="parish"
+                    placeholder="Kijuma Ward"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="village"
+                    ><i class="fa-solid fa-house"></i> Village
+                    <span class="optional">(optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    id="village"
+                    name="village"
+                    placeholder="Nyakabara"
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend>Previous school</legend>
+              <p class="section-hint" id="previousSchoolHint">
+                Select a class to see which previous-school details are needed.
+              </p>
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="previousSchoolName">
+                    <span id="previousSchoolNameLabel">Previous school name</span>
+                    <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="previousSchoolName"
+                    name="previousSchoolName"
+                    placeholder="Name of your previous school"
+                    maxlength="120"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="previousSchoolLin" id="previousSchoolLinLabel">
+                    Learner Identification Number (LIN)
+                    <span class="required" id="linRequiredMark" hidden>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="previousSchoolLin"
+                    name="previousSchoolLin"
+                    placeholder="Enter your LIN if available"
+                    maxlength="32"
+                  />
+                  <small class="field-hint" id="linHint"
+                    >LIN is required for Senior 2 applicants.</small
+                  >
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="parent-section">
+              <legend>
+                Parent details <span class="optional">(optional)</span>
+              </legend>
+              <div class="parent-toggles">
+                <p>Are parents alive?</p>
+                <div class="toggle-options">
+                  <label class="toggle-label" for="motherAlive">
+                    <i class="fa-solid fa-person-dress"></i>
+                    <span>Mother</span>
+                    <span class="toggle-switch">
+                      <input
+                        type="checkbox"
+                        id="motherAlive"
+                        name="motherAlive"
+                        checked
+                        value="true"
+                      />
+                      <span class="toggle-slider" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="toggle-label" for="fatherAlive">
+                    <i class="fa-solid fa-person"></i>
+                    <span>Father</span>
+                    <span class="toggle-switch">
+                      <input
+                        type="checkbox"
+                        id="fatherAlive"
+                        name="fatherAlive"
+                        checked
+                        value="true"
+                      />
+                      <span class="toggle-slider" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <fieldset class="parent-details" id="motherDetails">
+                <legend>
+                  <i class="fa-solid fa-person-dress"></i> Mother's details
+                </legend>
+                <div class="form-row">
+                  <div class="input-group">
+                    <label for="motherName">Mother's name</label>
+                    <input
+                      type="text"
+                      id="motherName"
+                      name="motherName"
+                      placeholder="mummy"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label for="motherNIN">Mother's NIN</label>
+                    <input
+                      type="text"
+                      id="motherNIN"
+                      name="motherNIN"
+                      placeholder="CF1234567890AB"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label for="motherContact">Mother's contact</label>
+                    <input
+                      type="tel"
+                      id="motherContact"
+                      name="motherContact"
+                      placeholder="+256 700 111 222"
+                    />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="parent-details" id="fatherDetails">
+                <legend>
+                  <i class="fa-solid fa-person"></i> Father's details
+                </legend>
+                <div class="form-row">
+                  <div class="input-group">
+                    <label for="fatherName">Father's name</label>
+                    <input
+                      type="text"
+                      id="fatherName"
+                      name="fatherName"
+                      placeholder="Okello John"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label for="fatherNIN">Father's NIN</label>
+                    <input
+                      type="text"
+                      id="fatherNIN"
+                      name="fatherNIN"
+                      placeholder="CM9876543210CD"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label for="fatherContact">Father's contact</label>
+                    <input
+                      type="tel"
+                      id="fatherContact"
+                      name="fatherContact"
+                      placeholder="+256 772 333 444"
+                    />
+                  </div>
+                </div>
+              </fieldset>
+            </fieldset>
+
+            <div class="form-row guardian-row">
+              <div class="input-group input-full">
+                <label for="parentContact">
+                  <i class="fa-solid fa-phone"></i> Parent / Guardian phone
+                  <span class="required">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="parentContact"
+                  name="parentContact"
+                  placeholder="+256 700 000 000"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+              <div class="input-group input-full">
+                <label class="inline-choice" for="sameAsParentPhone">
+                  <input type="checkbox" id="sameAsParentPhone" checked />
+                  This is also the parent / guardian’s WhatsApp number
+                </label>
+                <div
+                  class="whatsapp-number-field"
+                  id="whatsappNumberField"
+                  hidden
+                >
+                  <label for="parentWhatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Different WhatsApp
+                    number
+                  </label>
+                  <input
+                    type="tel"
+                    id="parentWhatsapp"
+                    name="parentWhatsapp"
+                    placeholder="+256 700 000 000"
+                    autocomplete="tel"
+                    maxlength="32"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="form-section">
+              <legend>
+                Anything else to help us support you?
+                <span class="optional">(optional)</span>
+              </legend>
+              <label class="inline-choice" for="hasSupportNeeds">
+                <input type="checkbox" id="hasSupportNeeds" />
+                Anything else to help
+              </label>
+              <div
+                class="input-group support-details-field"
+                id="supportDetailsField"
+                hidden
+              >
+                <label for="supportNeeds"
+                  >What would help you feel supported at school?</label
+                >
+                <textarea
+                  id="supportNeeds"
+                  name="supportNeeds"
+                  rows="3"
+                  maxlength="1000"
+                  placeholder="Share only the information you’re comfortable providing."
+                  disabled
+                ></textarea>
+                <small class="field-hint"
+                  >Only admissions staff can view this information.</small
+                >
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend>
+                How did you hear about us?
+                <span class="optional">(optional)</span>
+              </legend>
+              <div class="form-row">
+                <div class="input-group input-full">
+                  <label for="referralSource">Choose one</label>
+                  <select id="referralSource" name="referralSource">
+                    <option value="">Prefer not to say</option>
+                    <option value="friend-family">Friend or family</option>
+                    <option value="teacher">Teacher or previous school</option>
+                    <option value="social-media">Social media</option>
+                    <option value="school-visit">
+                      School visit or open day
+                    </option>
+                    <option value="community">Community event</option>
+                    <option value="church">Church</option>
+                    <option value="radio">Radio</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div
+                  class="input-group input-full"
+                  id="referralDetailsField"
+                  hidden
+                >
+                  <label for="referralDetails"
+                    >Please tell us where you heard about us</label
+                  >
+                  <input
+                    type="text"
+                    id="referralDetails"
+                    name="referralDetails"
+                    maxlength="120"
+                    disabled
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <button type="submit" class="submit-button">
+              <i class="fa-solid fa-paper-plane"></i>
+              Submit admission form
+            </button>
+          </form>
+
+          <section
+            class="confirmation-box"
+            id="confirmationBox"
+            aria-live="polite"
+            hidden
+          >
+            <div class="confirmation-heading">
+              <i class="fa-solid fa-circle-check"></i>
+              <div>
+                <p>Submission status</p>
+                <strong>Application received</strong>
+              </div>
+            </div>
+            <p>
+              Thank you, <strong id="confirmName">student</strong>. Your
+              application to join
+              <strong id="confirmClass">your selected class</strong> has been
+              received.
+            </p>
+            <p class="admission-id" id="admissionIdBadge">HH-XXXXXX</p>
+            <p class="email-notice" id="emailNotice" role="status"></p>
+            <div class="confirmation-actions">
+              <button type="button" class="download-button" id="downloadLetter">
+                <i class="fa-solid fa-download"></i>
+                Download application receipt
+              </button>
+              <span
+                ><i class="fa-solid fa-mobile-screen"></i> Your application
+                receipt is ready</span
+              >
+            </div>
+          </section>
+        </section>
+
+        <aside class="info-panel" aria-label="School life and contact details">
+          <section class="image-card">
+            <h3><i class="fa-solid fa-camera"></i> Life at Heart & Hands</h3>
+            <div class="image-grid">
+              <figure>
+                <img
+                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=85"
+                  alt="Students learning in a bright classroom"
+                />
+              </figure>
+              <figure>
+                <img
+                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=700&q=85"
+                  alt="Students gathered on a school campus"
+                />
+              </figure>
+              <figure>
+                <img
+                  src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=85"
+                  alt="Students taking part in hands-on vocational work"
+                />
+              </figure>
+              <figure>
+                <img
+                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=85"
+                  alt="A welcoming classroom environment"
+                />
+              </figure>
+            </div>
+            <p>
+              Modern workshops · God-fearing environment · Determined teachers
+            </p>
+          </section>
+
+          <section class="contact-card">
+            <h3><i class="fa-solid fa-address-card"></i> Contact us</h3>
+            <a class="contact-item" href="tel:+256701919400">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>
+                <small>Principal</small>
+                <strong>Mr. Emmanuel Ssempala</strong>
+                <span>+256 701 919 400</span>
+              </span>
+            </a>
+            <a class="contact-item" href="tel:+256789317645">
+              <i class="fa-solid fa-user-gear"></i>
+              <span>
+                <small>Admissions admin</small>
+                <strong>Admissions office</strong>
+                <span>+256 789 317 645</span>
+              </span>
+            </a>
+            <a class="contact-item" href="tel:+256751764819">
+              <i class="fa-solid fa-phone"></i>
+              <span>
+                <small>Admissions admin</small>
+                <strong>Alternate number</strong>
+                <span>+256 751 764 819</span>
+              </span>
+            </a>
+            <a
+              class="contact-item"
+              href="mailto:admissions@heartandhands.ac.ug"
+            >
+              <i class="fa-solid fa-envelope"></i>
+              <span>
+                <small>Email</small>
+                <strong>admissions@heartandhands.ac.ug</strong>
+              </span>
+            </a>
+            <p class="contact-note">
+              <i class="fa-solid fa-circle-info"></i>
+              Submission creates a confirmation ID and downloadable application
+              receipt.
+            </p>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/script.js"></script>
+  </body>
+</html>
