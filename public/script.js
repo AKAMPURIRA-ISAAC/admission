@@ -6,6 +6,8 @@ const fatherAlive = document.querySelector("#fatherAlive");
 const motherDetails = document.querySelector("#motherDetails");
 const fatherDetails = document.querySelector("#fatherDetails");
 const joiningClass = document.querySelector("#joiningClass");
+const previousSchoolSection = document.querySelector("#previousSchoolSection");
+const previousSchoolName = document.querySelector("#previousSchoolName");
 const previousSchoolNameLabel = document.querySelector("#previousSchoolNameLabel");
 const previousSchoolHint = document.querySelector("#previousSchoolHint");
 const previousSchoolLin = document.querySelector("#previousSchoolLin");
@@ -41,12 +43,15 @@ function updateParentDetails() {
 
 function updateJoiningClass() {
   const isSeniorTwo = joiningClass.value === "Senior 2";
+  const showPreviousSchool = isSeniorTwo;
+  previousSchoolSection.hidden = !showPreviousSchool;
+  previousSchoolName.disabled = !showPreviousSchool;
+  previousSchoolLin.disabled = !showPreviousSchool;
+  previousSchoolName.required = showPreviousSchool;
   previousSchoolNameLabel.textContent = joiningClass.value
-    ? `Previous ${isSeniorTwo ? "secondary" : "primary"} school name`
+    ? "Previous secondary school name"
     : "Previous school name";
-  previousSchoolHint.textContent = joiningClass.value
-    ? `Enter the ${isSeniorTwo ? "secondary" : "primary"} school you last attended.`
-    : "Select a class to see which previous-school details are needed.";
+  previousSchoolHint.textContent = "Enter the secondary school you last attended.";
   previousSchoolLin.required = isSeniorTwo;
   linRequiredMark.hidden = !isSeniorTwo;
   linHint.textContent = isSeniorTwo
@@ -151,8 +156,8 @@ function formatAdmissionLetter(data, admissionId) {
     <p>Please keep this admission number for follow-up. If further information or a school visit is needed, the admissions team will contact you using the details provided.</p>
     <div class="footer">
       <p>Issued: ${escapeHtml(date)}</p>
-      <p><strong>Mr. Emmanuel Ssempala</strong><br>Principal · +256 701 919 400</p>
-      <p>Admissions · +256 789 317 645 · +256 751 764 819</p>
+      <p><strong>Mr. Araali Bright Mugume</strong><br>Principal · +256 701 919 400</p>
+      <p>Admissions By Mrs Annet Kebisembo · +256 789 317 645 · +256 751 764 819</p>
     </div>
   </article>
 </body>
@@ -186,7 +191,15 @@ async function submitAdmission(event) {
           : data.parentWhatsapp || "",
       }),
     });
-    const result = await response.json();
+    const responseText = await response.text();
+    let result;
+    try {
+      result = responseText ? JSON.parse(responseText) : {};
+    } catch {
+      throw new Error(
+        "The server returned an unexpected response. Please try again or contact admissions.",
+      );
+    }
 
     if (!response.ok) {
       throw new Error(result.error || "We could not submit your application.");

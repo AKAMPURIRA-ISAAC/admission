@@ -70,7 +70,6 @@ export function validateApplication(body) {
       "parentContact",
       "studentEmail",
       "joiningClass",
-      "previousSchoolName",
     ].includes(field);
     application[field] = readText(body, field, maxLength, required);
   }
@@ -81,8 +80,16 @@ export function validateApplication(body) {
   if (!["Senior 1", "Senior 2"].includes(application.joiningClass)) {
     throw new Error("Please select Senior 1 or Senior 2.");
   }
-  if (application.joiningClass === "Senior 2" && !application.previousSchoolLin) {
-    throw new Error("A learner identification number (LIN) is required for Senior 2 applicants.");
+  if (application.joiningClass === "Senior 2") {
+    if (!application.previousSchoolName) {
+      throw new Error("The previous secondary school name is required for Senior 2 applicants.");
+    }
+    if (!application.previousSchoolLin) {
+      throw new Error("A learner identification number (LIN) is required for Senior 2 applicants.");
+    }
+  } else {
+    application.previousSchoolName = "";
+    application.previousSchoolLin = "";
   }
   if (!referralSources.has(application.referralSource)) {
     throw new Error("Please choose a valid referral source.");

@@ -122,6 +122,14 @@ test("admission validation and protected admin application flow", async (t) => {
     () => validateApplication({ ...applicationPayload, previousSchoolLin: "" }),
     /identification number \(LIN\) is required for Senior 2/i,
   );
+  const seniorOneApplication = validateApplication({
+    ...applicationPayload,
+    joiningClass: "Senior 1",
+    previousSchoolName: "",
+    previousSchoolLin: "",
+  });
+  assert.equal(seniorOneApplication.previousSchoolName, "");
+  assert.equal(seniorOneApplication.previousSchoolLin, "");
 
   const generatedNumbers = new Set(
     Array.from({ length: 100 }, () => makeAdmissionNumber()),
