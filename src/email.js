@@ -58,8 +58,16 @@ export async function sendApplicationNotification({ admissionNumber, studentName
   if (!configuration) {
     return { sent: false, reason: "not_configured" };
   }
-  const baseUrl = (process.env.PUBLIC_BASE_URL || "").replace(/\/+$/, "");
-  const portalLink = baseUrl ? `${baseUrl}/admin.html` : "the admissions admin portal";
+  const baseUrl = (
+    process.env.PUBLIC_BASE_URL ||
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.VERCEL_URL ||
+    ""
+  ).replace(/^https?:\/\//, "").replace(/\/+$/, "");
+  const absoluteBaseUrl = baseUrl ? `https://${baseUrl}` : "";
+  const portalLink = absoluteBaseUrl
+    ? `${absoluteBaseUrl}/admin.html`
+    : "the admissions admin portal";
 
   return sendEmail(
     configuration.adminRecipient,

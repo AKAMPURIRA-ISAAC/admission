@@ -10,6 +10,8 @@
     "start": "node --env-file-if-exists=.env src/server.js",
     "create-admin": "node --env-file-if-exists=.env scripts/create-admin.js",
     "migrate:postgres": "node --env-file-if-exists=.env scripts/migrate-sqlite-to-postgres.js",
+    "deployment:env": "node scripts/prepare-vercel-env.js",
+    "deployment:env:write": "node scripts/prepare-vercel-env.js --write",
     "test": "node --test"
   },
   "dependencies": {

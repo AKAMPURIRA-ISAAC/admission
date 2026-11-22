@@ -123,6 +123,28 @@ tiers and limits can change, so verify current Supabase and Vercel pricing,
 sleep behavior, usage limits, backups, and regional data policies before storing
 real student applications.
 
+## Detect Vercel environment variables
+
+The project includes a safe setup helper that reads `.env` and detects database,
+SMTP, and Vercel values:
+
+```sh
+npm run deployment:env
+```
+
+It masks passwords and database credentials in terminal output. To create a
+private paste-ready file for the Vercel dashboard, run:
+
+```sh
+npm run deployment:env:write
+```
+
+This creates `.vercel.env`, which is ignored by Git and contains secrets.
+Delete it after use. `NODE_ENV=production` and `TRUST_PROXY=true` are detected
+automatically. Vercel deployment URLs are detected at runtime by
+`VERCEL_PROJECT_PRODUCTION_URL` or `VERCEL_URL`; `PUBLIC_BASE_URL` is only
+used when it is not a localhost address.
+
 ## Tests
 
 Run the focused application, authentication, and search integration tests:
