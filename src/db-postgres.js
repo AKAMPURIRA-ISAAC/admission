@@ -1,6 +1,5 @@
-import { DatabaseSync } from "node:sqlite";
-import { resolve } from "node:path";
 import pg from "pg";
+import { resolve } from "node:path";
 
 const { Pool } = pg;
 const connectionString = process.env.DATABASE_URL
