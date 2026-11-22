@@ -13,12 +13,10 @@ if (!connectionString) {
 
 export const pool = new Pool({
   connectionString,
-  ssl: process.env.PGSSLMODE === "disable"
-    ? false
-    : { rejectUnauthorized: process.env.PGSSL_REJECT_UNAUTHORIZED === "true" },
+  ssl: { rejectUnauthorized: false },
   max: 5,
   idleTimeoutMillis: 30_000,
-  connectionTimeoutMillis: 10_000,
+  connectionTimeoutMillis: 30_000,
 });
 
 pool.on("error", (error) => {
