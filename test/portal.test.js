@@ -7,6 +7,7 @@ import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { createServer } from "node:net";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { makeAdmissionNumber } from "../src/admission-number.js";
 import { hashPassword } from "../src/password.js";
@@ -110,6 +111,11 @@ test("admission validation and protected admin application flow", async (t) => {
   assert.equal(ready, true, "server should start and serve the admission form");
   assert.equal((await fetch(`${baseUrl}/styles.css`)).status, 200);
   assert.equal((await fetch(`${baseUrl}/admin.html`)).status, 200);
+  const admissionHtml = await readFile(join(projectDirectory, "public", "index.html"), "utf8");
+  assert.match(admissionHtml, /id="county"[^>]*name="county"/);
+  assert.match(admissionHtml, /id="subcounty"[^>]*name="subcounty"/);
+  assert.match(admissionHtml, /id="motherNIN"[^>]*name="motherNin"/);
+  assert.match(admissionHtml, /id="fatherNIN"[^>]*name="fatherNin"/);
   assert.equal((await fetch(`${baseUrl}/package.json`)).status, 404);
   assert.equal((await fetch(`${baseUrl}/db.js`)).status, 404);
 
