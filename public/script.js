@@ -8,7 +8,9 @@ const fatherDetails = document.querySelector("#fatherDetails");
 const joiningClass = document.querySelector("#joiningClass");
 const previousSchoolSection = document.querySelector("#previousSchoolSection");
 const previousSchoolName = document.querySelector("#previousSchoolName");
-const previousSchoolNameLabel = document.querySelector("#previousSchoolNameLabel");
+const previousSchoolNameLabel = document.querySelector(
+  "#previousSchoolNameLabel",
+);
 const previousSchoolHint = document.querySelector("#previousSchoolHint");
 const previousSchoolLin = document.querySelector("#previousSchoolLin");
 const linRequiredMark = document.querySelector("#linRequiredMark");
@@ -51,7 +53,8 @@ function updateJoiningClass() {
   previousSchoolNameLabel.textContent = joiningClass.value
     ? "Previous secondary school name"
     : "Previous school name";
-  previousSchoolHint.textContent = "Enter the secondary school you last attended.";
+  previousSchoolHint.textContent =
+    "Enter the secondary school you last attended.";
   previousSchoolLin.required = isSeniorTwo;
   linRequiredMark.hidden = !isSeniorTwo;
   linHint.textContent = isSeniorTwo
@@ -157,7 +160,7 @@ function formatAdmissionLetter(data, admissionId) {
     <div class="footer">
       <p>Issued: ${escapeHtml(date)}</p>
       <p><strong>Mr. Araali Bright Mugume</strong><br>Principal · +256 701 919 400</p>
-      <p>Admissions By Mrs Annet Kebisembo · +256 789 317 645 · +256 751 764 819</p>
+      <p>Admissions office · +256 789 317 645 · +256 751 764 819</p>
     </div>
   </article>
 </body>
@@ -222,7 +225,9 @@ async function submitAdmission(event) {
     const blob = new Blob([letter], { type: "text/html;charset=utf-8" });
     admissionLetterUrl = URL.createObjectURL(blob);
 
-    const safeName = studentName.replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "");
+    const safeName = studentName
+      .replace(/[^a-z0-9]+/gi, "_")
+      .replace(/^_|_$/g, "");
     downloadLetter.dataset.filename = `Admission_${safeName || "Student"}_${admissionId}.html`;
 
     const emailNotice = confirmationBox.querySelector("#emailNotice");
@@ -232,7 +237,10 @@ async function submitAdmission(event) {
     confirmationBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
     showToast(`Application saved. Your admission number is ${admissionId}.`);
   } catch (error) {
-    showToast(error.message || "We could not submit your application. Please try again.");
+    showToast(
+      error.message ||
+        "We could not submit your application. Please try again.",
+    );
   } finally {
     submitButton.disabled = false;
     submitButton.removeAttribute("aria-busy");
